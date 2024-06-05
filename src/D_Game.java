@@ -6,9 +6,19 @@ public class D_Game {
         Scanner sc = new Scanner(System.in);
         int n  = sc.nextInt();
         String commands = sc.next();
+        if(!(commands.contains("R") && commands.contains("L"))){
+            System.out.println((n-1) * 2 + 1);
+        } else {
+            System.out.println(answer(commands, n));
+        }
+
+    }
+
+    public static int answer (String commands, int n) {
         int counter = 0;
         char vector = 'R';
         HashSet<Integer> numberF = new HashSet<>();
+
         for(int i = 0; i < n - 1; ++i) {
             if(commands.charAt(i) == 'L'){
                 int fnum = getF(commands, i +1);
@@ -46,7 +56,7 @@ public class D_Game {
                 }
             }
         }
-        System.out.println(counter+1);
+        return counter+1;
     }
 
     public static int getF(String str, int pos) {
